@@ -23,8 +23,8 @@ process spell_SmallTeleportBolt {
 // ===================
 
 function spell_DoubleCast {
-    call wand_cast;
-    call wand_cast;
+    call wand_Cast;
+    call wand_Cast;
 }
 
 function spell_NoGravity {

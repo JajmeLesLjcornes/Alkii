@@ -14,3 +14,10 @@ process wand_RechargeTime {
 //      Function
 // ===================
 
+function wand_CheckEndOfSpells{
+
+}
+
+function wand_Cast {
+
+}
