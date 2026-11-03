@@ -1,0 +1,1 @@
+declare global "%default_mana": num;
