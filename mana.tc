@@ -3,8 +3,9 @@
  */
 
 function player_mana_use(mana_used:num): num {
-    global "%default_mana" += mana_used;
-
-    return -1;
-
+    global "%default_mana" -= mana_used;
+    if (global "%default_mana" < 0) {
+        global "%default_mana" += mana_used;
+        return -1;
+    }
 }
