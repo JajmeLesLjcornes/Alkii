@@ -1,0 +1,3 @@
+gameevent startup {
+     start game_loop1t;
+}

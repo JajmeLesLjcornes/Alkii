@@ -1,0 +1,5 @@
+process game_loop1t {
+    repeat {
+        wait(1, unit="Ticks");
+    }
+}
