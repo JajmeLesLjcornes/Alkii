@@ -1,3 +1,8 @@
 gameevent startup {
+     game_setup_vars();
      start game_loop1t;
+}
+
+function game_setup_vars {
+
 }
