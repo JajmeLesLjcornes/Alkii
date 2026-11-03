@@ -14,7 +14,18 @@ process spell_SparkBolt {
 
 }
 
+process spell_SmallTeleportBolt {
+    
+}
 
 // ===================
 //      Function
 // ===================
+
+function spell_DoubleCast {
+
+}
+
+function spell_NoGravity {
+
+}
