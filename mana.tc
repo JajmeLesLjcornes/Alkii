@@ -2,3 +2,9 @@
  * Mana related function
  */
 
+function player_mana_use(mana_used:num): num {
+    global "%default_mana" += mana_used;
+
+    return -1;
+
+}
