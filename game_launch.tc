@@ -23,8 +23,8 @@ line temp_spells_dict:dict[item] = dict.create(line spells_id, line spells_item)
 global spells_dict:dict[item];
 for (line spell_id,line spell_item of line temp_spells_dict)
 {
-    item.setTag(line spell_item,"spell_id",line spell_id);
-    item.setMaxStackSize(line spell_item,1);
+    line spell_item = item.setTag(line spell_item,"spell_id",line spell_id);
+    line spell_item = item.setMaxStackSize(line spell_item,1);
     dict.set(global spells_dict, line spell_id, line spell_item);
 }
 }
