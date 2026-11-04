@@ -6,6 +6,10 @@
       "data": "{components:{\"minecraft:custom_name\":{extra:[{color:\"#B2F4FF\",text:\"Double Cast\"}],italic:0b,text:\"\"},\"minecraft:item_model\":\"minecraft:netherite_scrap\",\"minecraft:lore\":[{bold:0b,color:\"white\",extra:[{color:\"#39AAAA\",text:\"Multicast\"}],italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}]},id:\"minecraft:paper\"}",
       "version": 4440
     },
+    "empty_slot": {
+      "data": "{id:\"minecraft:barrier\",components:{}}",
+      "version": 4440
+    },
     "no_gravity": {
       "data": "{components:{\"minecraft:custom_name\":{extra:[{color:\"#B2F4FF\",text:\"No Gravity\"}],italic:0b,text:\"\"},\"minecraft:item_model\":\"minecraft:wind_charge\",\"minecraft:lore\":[{bold:0b,color:\"white\",extra:[{color:\"#39AAFA\",text:\"Modifier\"}],italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}]},id:\"minecraft:paper\"}",
       "version": 4440

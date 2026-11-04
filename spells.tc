@@ -22,6 +22,10 @@ process spell_SmallTeleportBolt {
 //      Function
 // ===================
 
+function spell_EmptySlot {
+    call wand_Cast;
+}
+
 function spell_DoubleCast {
     call wand_Cast;
     call wand_Cast;
