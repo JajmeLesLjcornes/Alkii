@@ -18,7 +18,7 @@ function SpellModifier_add(vector_list:list) {
 process Spell_SparkBolt {
     line can_cast = player_mana_use(3);
     if (can_cast < 0) {
-        call wand_Cast;
+        call Wand_Cast;
         return;
     }
     line vector_list = [
@@ -39,12 +39,12 @@ process Spell_SmallTeleportBolt {
 // ===================
 
 function Spell_EmptySlot {
-    call wand_Cast;
+    call Wand_Cast;
 }
 
 function Spell_DoubleCast {
-    call wand_Cast;
-    call wand_Cast;
+    call Wand_Cast;
+    call Wand_Cast;
 }
 
 function Spell_NoGravity {
