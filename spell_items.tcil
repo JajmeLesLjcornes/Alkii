@@ -7,7 +7,7 @@
       "version": 4440
     },
     "empty_slot": {
-      "data": "{id:\"minecraft:barrier\",components:{}}",
+      "data": "{components:{},id:\"minecraft:barrier\"}",
       "version": 4440
     },
     "no_gravity": {

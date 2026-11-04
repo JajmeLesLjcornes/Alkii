@@ -12,23 +12,19 @@ line spells_id = [
     "Empty slot"
 ];
 
-}
-
-/*
-FUNCTION ("Game.setup vars");
-
-line spells_item = [
+line spells_item:list[item] = [
     litem("spell_items", "spark_bolt"),
     litem("spell_items", "double_cast"),
     litem("spell_items", "no_gravity"),
     litem("spell_items", "small_teleport_bolt"),
     litem("spell_items", "empty_slot")
 ];
-line temp_spells_dict = dict:Create(line spells_id, line spells_item);
-for (line spell_id,line spell_item in line temp_spells_dict :dict)
+line temp_spells_dict:dict[item] = dict.create(line spells_id, line spells_item);
+global spells_dict:dict[item];
+for (line spell_id,line spell_item of line temp_spells_dict)
 {
-    item:SetTag(line spell_item,"spell_id",line spell_id);
-    item:SetMaxStackSize(line spell_item,1);
-    dict:Set(global spells_dict, line spell_id, line spell_item);
+    item.setTag(line spell_item,"spell_id",line spell_id);
+    item.setMaxStackSize(line spell_item,1);
+    dict.set(global spells_dict, line spell_id, line spell_item);
 }
-*/
+}
