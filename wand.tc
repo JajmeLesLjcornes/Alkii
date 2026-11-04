@@ -14,6 +14,25 @@ process wand_RechargeTime {
 //      Function
 // ===================
 
+function wand_UpdatePlayerDeck(item_input:item){
+    var.purgeMatching("%default_deck_index","%default_deck");
+    line deck:str = item.getTag(item_input,"wand_deck");
+    global "%default_deck" = var.toJSON(line deck);
+}
+
+/*
+    FUNCTION ("Game.update wand deck")(
+ item_input:item,
+    item_output:var,
+    ...deck:str){
+    line deck = list.flatten(line deck);
+    call ("Wand.set lore info")(line deck,line text);
+    var.toJSON(line deck,line deck);
+    item.setTag(line item_output,line item_input,"wand_deck",line deck);
+    item.setLore(line item_output,line text); 
+    }
+*/
+
 function wand_CheckEndOfSpells{
 
 }
