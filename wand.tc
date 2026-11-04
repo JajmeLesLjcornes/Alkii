@@ -6,7 +6,11 @@
 //      Process
 // ===================
 
-process wand_RechargeTime {
+process Wand_RechargeTime {
+
+}
+
+process Wand_CastDelay {
 
 }
 
@@ -14,10 +18,10 @@ process wand_RechargeTime {
 //      Function
 // ===================
 
-function wand_UpdatePlayerDeck(item_input:item){
+function Wand_UpdatePlayerDeck(item_input:item){
     var.purgeMatching("%default_deck_index","%default_deck");
-    line deck:str = item.getTag(item_input,"wand_deck");
-    global "%default_deck" = var.toJSON(line deck);
+    line deck = item.getTag(item_input,"wand_deck") as str;
+    global "%default_deck" = var.fromJSON(deck);
 }
 
 /*
@@ -33,10 +37,10 @@ function wand_UpdatePlayerDeck(item_input:item){
     }
 */
 
-function wand_CheckEndOfSpells{
+function Wand_CheckEndOfSpells{
 
 }
 
-function wand_Cast {
+function Wand_Cast {
 
 }
