@@ -3,18 +3,34 @@
  */
 
 
+function SpellModifier_add(vector_list:list) {
+
+}
 
 
+
+// Spells :
 
 // ===================
 //      Process
 // ===================
 
-process spell_SparkBolt {
+process Spell_SparkBolt {
+    line can_cast = player_mana_use(3);
+    if (can_cast < 0) {
+        call wand_Cast;
+        return;
+    }
+    line vector_list = [
+        "gravity=0.04",
+    ];
+    call SpellModifier_add(vector_list);
+    local cast_delay = 5;
+    start Wand_CastDelay(localVariables="Share", targetMode="With current targets");
 
 }
 
-process spell_SmallTeleportBolt {
+process Spell_SmallTeleportBolt {
     
 }
 
@@ -22,15 +38,15 @@ process spell_SmallTeleportBolt {
 //      Function
 // ===================
 
-function spell_EmptySlot {
+function Spell_EmptySlot {
     call wand_Cast;
 }
 
-function spell_DoubleCast {
+function Spell_DoubleCast {
     call wand_Cast;
     call wand_Cast;
 }
 
-function spell_NoGravity {
+function Spell_NoGravity {
 
 }
