@@ -4,27 +4,27 @@ gameevent startup {
 }
 
 function game_setup_vars {
-line spells_id = [
-    "Spark Bolt",
-    "Double Cast",
-    "No Gravity",
-    "Small Teleport Bolt",
-    "Empty slot"
-];
+    line spells_id = [
+        "Spark Bolt",
+        "Double Cast",
+        "No Gravity",
+        "Small Teleport Bolt",
+        "Empty slot"
+    ];
 
-line spells_item:list[item] = [
-    litem("spell_items", "spark_bolt"),
-    litem("spell_items", "double_cast"),
-    litem("spell_items", "no_gravity"),
-    litem("spell_items", "small_teleport_bolt"),
-    litem("spell_items", "empty_slot")
-];
-line temp_spells_dict:dict[item] = dict.create(line spells_id, line spells_item);
-global spells_dict:dict[item];
-for (line spell_id,line spell_item of line temp_spells_dict)
-{
-    line spell_item = item.setTag(line spell_item,"spell_id",line spell_id);
-    line spell_item = item.setMaxStackSize(line spell_item,1);
-    dict.set(global spells_dict, line spell_id, line spell_item);
-}
-}
+    line spells_item:list[item] = [
+        litem("spell_items", "spark_bolt"),
+        litem("spell_items", "double_cast"),
+        litem("spell_items", "no_gravity"),
+        litem("spell_items", "small_teleport_bolt"),
+        litem("spell_items", "empty_slot")
+    ];
+    line temp_spells_dict:dict[item] = dict.create(line spells_id, line spells_item);
+    global spells_dict:dict[item];
+    for (line spell_id,line spell_item of line temp_spells_dict)
+        {
+            line spell_item = item.setTag(line spell_item,"spell_id",line spell_id);
+            line spell_item = item.setMaxStackSize(line spell_item,1);
+            dict.set(global spells_dict, line spell_id, line spell_item);
+        }
+}   
