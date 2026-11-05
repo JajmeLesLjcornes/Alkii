@@ -29,11 +29,7 @@ process Wand_CastDelay {
 //      Function
 // ===================
 
-function Wand_UpdatePlayerDeck(item_input:item){
-    var.purgeMatching("%default_deck_index","%default_deck");
-    line deck = item.getTag(item_input,"wand_deck") as str;
-    global "%default_deck" = var.fromJSON(deck);
-}
+
 
 /*
 JARIVE PA A FAIR DES RETURN CA CASSE LES B
@@ -75,11 +71,28 @@ function Wand_Cast {
 
 }
 
+function Wand_GetDeckItem(deck?: list[str]): list {
+    line items = [];
+    for (line id of deck) {
+        line temp_item = dict.get(global spells_dict, line id);
+        items.append(temp_item);
+    }
+    return items;
+}
 
 //////////////////////////
 // Player Wand Function //
 //////////////////////////
 
-function Player_ShowInv_Wand {
-    
+function Player_Wand_UpdateDeck(item_input:item){
+    var.purgeMatching("%default_deck_index","%default_deck");
+    line deck = item.getTag(item_input,"wand_deck") as str;
+    global "%default_deck" = var.fromJSON(deck) as list[str];
+}
+
+function Player_ShowInv_WandEditor {
+    if (item.hasTag(default.mainHandItem, "item.type", "Wand")) {
+        call Player_Wand_UpdateDeck(default.mainHandItem);
+        line items = Wand_GetDeckItem(global "%default_deck");
+    }
 }
