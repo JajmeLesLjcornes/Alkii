@@ -29,14 +29,3 @@ function game_setup_vars {
         }
 }   
 
-playerevent join {
-    do {
-        default.sendTitle(s"Loading",5,0,0);
-        wait; 
-    } while !(var.exists(global spells_dict)) 0;
-    default.setHotbarSlot(9);
-    global "%default_mana" = 100;
-    global "%default_mana_max" = 100;
-    wait;
-    call Wand_UpdatePlayerDeck(default.mainHandItem);
-}
