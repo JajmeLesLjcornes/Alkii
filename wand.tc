@@ -74,3 +74,12 @@ function Wand_CheckEndOfSpells{
 function Wand_Cast {
 
 }
+
+
+//////////////////////////
+// Player Wand Function //
+//////////////////////////
+
+function Player_ShowInv_Wand {
+    
+}
