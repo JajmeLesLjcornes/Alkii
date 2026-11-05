@@ -36,16 +36,35 @@ function Wand_UpdatePlayerDeck(item_input:item){
 }
 
 /*
-    FUNCTION ("Game.update wand deck")(
- item_input:item,
+JARIVE PA A FAIR DES RETURN CA CASSE LES B
+
+function Wand_UpdateDeck(
     item_output:var,
-    ...deck:str){
+    item_input:item,
+    ...deck:str
+){
     line deck = list.flatten(line deck);
-    call ("Wand.set lore info")(line deck,line text);
-    var.toJSON(line deck,line deck);
-    item.setTag(line item_output,line item_input,"wand_deck",line deck);
-    item.setLore(line item_output,line text); 
+    call Wand_SetLore(line deck,line text);
+    line deck_str = var.toJSON(line deck) as str;
+    line item_output:item = item.setTag(line item_input,"wand_deck",line deck_str);
+    line item_output:item = item.setLore(line item_output,line text ); 
+}
+
+function Wand_SetLore(
+    deck:list[str],
+    output:var
+){
+    output=[];
+    call Wand_GetDeckItems(line items,line deck);
+}
+
+function Wand_GetDeckItems(items:var,deck:list[str]){
+    items=[];
+    for (line id as str of line deck as list){
+        line item = dict.get(global spells_dict,line id);
+
     }
+}
 */
 
 function Wand_CheckEndOfSpells{
