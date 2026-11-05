@@ -7,12 +7,12 @@ playerevent join {
     global "%default_mana" = 100;
     global "%default_mana_max" = 100;
     wait;
-    call Wand_UpdatePlayerDeck(default.mainHandItem);
+    call Player_Wand_UpdateDeck(default.mainHandItem);
 }
 
 lscancel
 playerevent swapHands {
     event.cancel();
-    call Player_ShowInv_Wand();
+    call Player_ShowInv_WandEditor();
 }
 
