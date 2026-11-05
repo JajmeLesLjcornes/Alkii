@@ -16,7 +16,7 @@ function SpellModifier_add(vector_list:list) {
 // ===================
 
 process Spell_SparkBolt {
-    line can_cast = player_mana_use(3);
+    line can_cast = Player_Mana_Use(3);
     if (can_cast < 0) {
         call Wand_Cast;
         return;
