@@ -1,1 +1,3 @@
 declare global "%default_mana": num;
+declare global "%default_deck": list[str];
+declare global spells_dict: dict;
