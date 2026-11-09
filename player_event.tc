@@ -11,8 +11,34 @@ playerevent join {
 }
 
 lscancel
-playerevent swapHands {
-    event.cancel();
-    call Player_ShowInv_WandEditor();
+playerevent rightClick {
+    event.cancel;
+    if (player.itemIsNotOnCooldown(default.mainHandItem)) {
+        return;
+    }
+    line function_to_call = item.getTag(default.mainHandItem, "right_click");
+    call "%var(function_to_call)";
 }
 
+lscancel
+playerevent swapHands {
+    event.cancel();
+    call Player_ShowInv_WandEditor(); // à changer d'endroit plus tard
+}
+
+lscancel
+playerevent changeSlot {
+    call Player_Wand_UpdateDeck(default.mainHandItem);
+}
+
+
+playerevent clickMenuSlot {
+    line inv_name = str.setToString(default.openInventoryTitle, merging="No spaces");
+    // AJOUTER FONCTION ICI POUR MENUS
+}
+
+playerevent closeInventory {
+    line inv_name = str.setToString(default.openInventoryTitle, merging="No spaces");
+    // AJOUTER FONCTION ICI POUR MENUS
+
+}
