@@ -1,6 +1,9 @@
 declare global "%default_mana": num;
 declare global "%default_deck": list[str];
+declare global "%default_deck_index": num;
+
 declare global spells_dict: dict;
+
 declare local spell_modifier_remove: list[str];
 declare local spell_modifier_add: list[str];
 
