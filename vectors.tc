@@ -2,6 +2,10 @@
  * Vectors
  */
 
+function "Vector_%var(vector_str)"(a:loc, b:num): loc {
+
+}
+
 function Vector_SpreadRNG(old_origin: loc, spread_rng: num): loc {
     line vector_dir =  old_origin.getDirection();
     line vector_rng = vec.random(spread_rng);
