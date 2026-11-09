@@ -68,7 +68,7 @@ function Wand_CheckEndOfSpells{
 }
 
 function Wand_Cast {
-
+    line cooldown_left = item.getDurability(default.mainHandItem);
 }
 
 function Wand_GetDeckItem(deck?: list[str]): list {
@@ -93,6 +93,25 @@ function Player_Wand_UpdateDeck(item_input:item){
 function Player_ShowInv_WandEditor {
     if (item.hasTag(default.mainHandItem, "item.type", "Wand")) {
         call Player_Wand_UpdateDeck(default.mainHandItem);
-        line items = Wand_GetDeckItem(global "%default_deck");
+        line items = Wand_GetDeckItem(global "%default_deck") as list[item];
+        line items_len = list.len(items);
+        default.showInventoryMenu();
+        default.expandInventoryMenu();
+        line slot = 11;
+        for (line temp_item of items) {
+            if (item.hasTag(temp_item, "speel.id", "Empty slot")) {
+                default.setInventoryMenuItem(slot);
+            }
+            else {
+                default.setInventoryMenuItem(slot, temp_item);
+            }
+            line slot += 1;
+            line slot_m9 = slot.remainder(9, mode="Modulo");
+            if (slot_m9 == 0) {
+                slot += 2;
+            }
+        }
+        default.setInventoryMenuName(s"Wand Editor");
+
     }
 }
