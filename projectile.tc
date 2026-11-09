@@ -1,0 +1,40 @@
+
+
+
+function Projectile_Shoot(
+    origin:loc,
+    iteration?:num = 1,
+    distance_per_iteration?:num = 1,
+    tick_per_iteration?:num = 1,
+    particle?:par,
+    spread?:num = 0,
+    vector_list?:list[str]): str, loc {
+
+        line origin = Vector_SpreadRNG(origin, spread);
+        repeat (iteration) {
+            line target_uuid, line hit_loc = Projectile_GetTarget_Raycast(origin, distance_per_iteration);
+            allPlayers.displayParticleLine(particle, origin, hit_loc);
+            if (target_uuid != 0) {
+                return target_uuid, hit_loc;
+            }
+            if (game.blockEquals(hit_loc)) {
+                return target_uuid, hit_loc;
+            }
+            line origin = line hit_loc;
+            for (line vector_str of vector_list) {
+                line vector_modifier =  0;
+                if (vector_str.contains("=")) {
+                    line vector_str_split = vector_str.split("=", stripSpaces="Enable");
+                    line vector_str = "%index(vector_str_split,1)";
+                    line vector_modifier = n"%index(vector_str_split,2)";  
+                }
+                line origin = call "Vector_%var(vector_str)"(origin, vector_modifier);
+            }
+            wait(tick_per_iteration);
+        }
+}
+
+function Projectile_GetTarget_Raycast(origin:loc, distance_per_iteration:num): str, loc {
+
+}
+
