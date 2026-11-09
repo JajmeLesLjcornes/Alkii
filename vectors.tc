@@ -1,0 +1,19 @@
+/**
+ * Vectors
+ */
+
+function Vector_SpreadRNG(old_origin: loc, spread_rng: num): loc {
+    line vector_dir =  old_origin.getDirection();
+    line vector_rng = vec.random(spread_rng);
+    line vector_dir = vec.add(vector_dir, vector_rng);
+    return old_origin.setDirection(vector_dir);
+}
+
+
+function Vector_Gravity(old_origin: loc, gravity: num): loc {
+    line vector_dir =  old_origin.getDirection();
+    line vector_y = vec.getComponent(vector_dir, comp="Y");
+    line vector_dir = vector_dir.setComponent(vector_y - gravity,comp="Y");
+    
+    return old_origin.setDirection(vector_dir);
+}
