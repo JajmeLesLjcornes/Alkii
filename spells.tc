@@ -39,7 +39,24 @@ process Spell_SparkBolt {
 }
 
 process Spell_SmallTeleportBolt {
-    
+    line can_cast = Player_Mana_Use(15);
+    if (can_cast < 0) {
+        call Wand_Cast;
+        return;
+    }
+    line vector_list = [] as list[str];
+    call SpellModifier_add_remove(vector_list);
+    start Wand_CastDelay(localVariables="Share", targetMode="With current targets");
+    line hit_target_uuid, line hit_target_loc = Projectile_Shoot(
+        default.eyeLocation,
+        1,
+        10,
+        0,
+        par("copper_fire_flame", amount=1, spreadHoriz=0, spreadVert=0),
+        0,
+        vector_list
+    );
+    selected.teleport(hit_target_loc);
 }
 
 // ===================
