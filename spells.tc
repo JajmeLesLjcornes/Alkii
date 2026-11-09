@@ -3,8 +3,16 @@
  */
 
 
-function SpellModifier_add(vector_list:list) {
-
+function SpellModifier_add_remove(vector_list:list[str]): list[str] {
+    line vector_list.appendList(local spell_modifier_add);
+    for (line vector_str of vector_list) {
+        for (line remove_str of spell_modifier_remove) {
+            if (str.startsWith(line vector_str, line remove_str)) {
+                line vector_list.removeValue(vector_str);
+            }
+        }
+    }
+    return vector_list;
 }
 
 
@@ -23,8 +31,8 @@ process Spell_SparkBolt {
     }
     line vector_list = [
         "gravity=0.04",
-    ];
-    call SpellModifier_add(vector_list);
+    ] as list[str];
+    call SpellModifier_add_remove(vector_list);
     local cast_delay = 5;
     start Wand_CastDelay(localVariables="Share", targetMode="With current targets");
 
@@ -48,5 +56,11 @@ function Spell_DoubleCast {
 }
 
 function Spell_NoGravity {
-
+    line can_cast = Player_Mana_Use(1);
+    if (can_cast < 0) {
+        call Wand_Cast();
+        return;
+    }
+    local spell_modifier_remove.append("gravity");
+    call Wand_Cast();
 }
