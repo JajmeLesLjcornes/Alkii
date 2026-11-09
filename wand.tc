@@ -69,6 +69,14 @@ function Wand_CheckEndOfSpells{
 
 function Wand_Cast {
     line cooldown_left = item.getDurability(default.mainHandItem);
+    if (cooldown_left != 100) {
+        return;
+    } 
+    call Wand_CheckEndOfSpells();
+    global "%default_deck_index" += 1;
+    start "Spell_%index(%default_deck,%var(%default_deck_index))";
+    call "Spell_%index(%default_deck,%var(%default_deck_index))";
+    call Wand_CheckEndOfSpells();
 }
 
 function Wand_GetDeckItem(deck?: list[str]): list {
