@@ -62,13 +62,7 @@ function Wand_SetLore(deck:list[str]): list[txt]{
 }
 
 
-function Wand_GetDeckItems(deck:list[str]): list[item]{
-    line items = [] as list[item];
-    for (line id of deck){
-        items.append(dict.get(global spells_dict,line id));
-    }
-    return items;
-}
+
 
 
 function Wand_CheckEndOfSpells{
@@ -91,11 +85,10 @@ function Wand_Cast {
     call Wand_CheckEndOfSpells();
 }
 
-function Wand_GetDeckItem(deck?: list[str]): list {
-    line items = [];
-    for (line id of deck) {
-        line temp_item = dict.get(global spells_dict, line id);
-        items.append(temp_item);
+function Wand_GetDeckItems(deck:list[str]): list[item]{
+    line items = [] as list[item];
+    for (line id of deck){
+        items.append(dict.get(global spells_dict,line id));
     }
     return items;
 }
