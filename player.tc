@@ -16,7 +16,20 @@ process Player_Loop1t() {
 
 
 
+function Player_Join() {
+    while !(var.exists(spells_dict)) {
+        default.sendTitle(s"Loading", s"", 5, 0, 0);
+        wait;
+    }
+    
+    global "%default_mana" = 100;
+    global "%default_mana_max" = 100;
 
+    start Player_Loop1t;
+
+    // Tempo
+    default.setHotbarItems(call Wand_UpdateDeck(litem("wands", "wand"), [""])  );
+}
 
 
 
