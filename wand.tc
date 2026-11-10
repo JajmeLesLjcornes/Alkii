@@ -37,7 +37,7 @@ function Wand_UpdateDeck(item_input:item, ...deck:str): item {
     return item_output.setLore(text); 
 }
 
-function Wand_SetLore(deck:list[str]): list[txt]{
+function Wand_SetLore(...deck:str): list[txt]{
     line output = [] as list[txt];
     line items = call Wand_GetDeckItems(line deck) as list[item];
     line text = txt.setToStyledText("", inheritStyles="True");
@@ -62,7 +62,7 @@ function Wand_SetLore(deck:list[str]): list[txt]{
 }
 
 
-function Wand_GetDeckItems(deck:list[str]): list[item]{
+function Wand_GetDeckItems(...deck:str): list[item]{
     line items = [] as list[item];
     for (line id of deck){
         items.append(dict.get(global spells_dict,line id));
@@ -91,7 +91,7 @@ function Wand_Cast {
     call Wand_CheckEndOfSpells();
 }
 
-function Wand_GetDeckItem(deck?: list[str]): list {
+function Wand_GetDeckItem(...deck:str): list {
     line items = [];
     for (line id of deck) {
         line temp_item = dict.get(global spells_dict, line id);
