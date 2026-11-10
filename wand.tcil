@@ -1,0 +1,11 @@
+{
+  "compilationMode": "item",
+  "id": "wand",
+  "items": {
+    "wand": {
+      "data": "{id:\"minecraft:stick\",components:{}}",
+      "version": 4440
+    }
+  },
+  "lastEditedWithExtensionVersion": "0.0.6"
+}
