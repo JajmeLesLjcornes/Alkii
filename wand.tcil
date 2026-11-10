@@ -3,7 +3,7 @@
   "id": "wand",
   "items": {
     "wand": {
-      "data": "{id:\"minecraft:stick\",components:{}}",
+      "data": "{components:{\"minecraft:custom_name\":{extra:[\"Wand\"],italic:0b,text:\"\"}},id:\"minecraft:stick\"}",
       "version": 4440
     }
   },
