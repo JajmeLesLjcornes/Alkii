@@ -8,7 +8,7 @@
 
 process Wand_RechargeTime {
     line current_wand = item.setDurability(default.mainHandItem, 0, durabilityType="Set Remaining Percentage") as item;
-    line recharge_time = item.getTag(default.mainHandItem, "recharge.time") as num;
+    line recharge_time = item.getTag(default.mainHandItem, "recharge_time") as num;
     default.replaceItems(default.mainHandItem, current_wand);
     while (recharge_time < 100) {
         wait;
@@ -20,7 +20,7 @@ process Wand_RechargeTime {
 }
 
 process Wand_CastDelay {
-    line base_cast_delay = item.getTag(default.mainHandItem, "base.cast.delay") as num;
+    line base_cast_delay = item.getTag(default.mainHandItem, "base_cast_delay") as num;
     default.setItemCooldown(default.mainHandItem, line base_cast_delay + local cast_delay as num);
 
 }
