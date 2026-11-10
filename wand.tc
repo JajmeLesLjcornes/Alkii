@@ -29,42 +29,54 @@ process Wand_CastDelay {
 //      Function
 // ===================
 
-
-
-/*
-JARIVE PA A FAIR DES RETURN CA CASSE LES B
-
-function Wand_UpdateDeck(
-    item_output:var,
-    item_input:item,
-    ...deck:str
-){
+function Wand_UpdateDeck(item_input:item, deck:list[str]): item {
     line deck = list.flatten(line deck);
-    call Wand_SetLore(line deck,line text);
+    line text = call Wand_SetLore(line deck) as list[txt];
     line deck_str = var.toJSON(line deck) as str;
-    line item_output:item = item.setTag(line item_input,"wand_deck",line deck_str);
-    line item_output:item = item.setLore(line item_output,line text ); 
+    line item_output = item.setTag(line item_input,"wand_deck",line deck_str);
+    return item_output.setLore(text); 
 }
 
-function Wand_SetLore(
-    deck:list[str],
-    output:var
-){
-    output=[];
-    call Wand_GetDeckItems(line items,line deck);
-}
-
-function Wand_GetDeckItems(items:var,deck:list[str]){
-    items=[];
-    for (line id as str of line deck as list){
-        line item = dict.get(global spells_dict,line id);
-
+function Wand_SetLore(deck:list[str]): list[txt]{
+    line output = [] as list[txt];
+    line items = call Wand_GetDeckItems(line deck) as list[item];
+    line text = txt.setToStyledText("", inheritStyles="True");
+    line slot = 1;
+    for (line _item of items) {
+        line model = _item.getModel();
+        line model.remove(model, "minecraft:", regEx="Disable");
+        line model.setToString("<sprite:items:item/", model, ">", merging="No spaces");
+        // line text.parseExpression(model); // C'est cassé
+        line text.setToStyledText(text, model);
+        line slot_m7 = slot.remainder(7, mode="Modulo");
+        if (slot_m7 == 0) {
+            output.append(text);
+            line text = s"";
+        }
+        slot += 1;
     }
+    if !(str.matches(text as str, "")) {
+        output.append(text);
+    }
+    return output;
 }
-*/
+
+
+function Wand_GetDeckItems(deck:list[str]): list[item]{
+    line items = [] as list[item];
+    for (line id of deck){
+        items.append(dict.get(global spells_dict,line id));
+    }
+    return items;
+}
+
 
 function Wand_CheckEndOfSpells{
-
+    if (list.sizeEquals(global "%default_deck", global "%default_deck_index")) {
+        var.purgeMatching("%default_deck_index", matchRequirement="Full word(s) in name");
+        start Wand_RechargeTime();
+        endthread;
+    }
 }
 
 function Wand_Cast {
@@ -88,38 +100,3 @@ function Wand_GetDeckItem(deck?: list[str]): list {
     return items;
 }
 
-//////////////////////////
-// Player Wand Function //
-//////////////////////////
-
-function Player_Wand_UpdateDeck(item_input:item){
-    var.purgeMatching("%default_deck_index","%default_deck");
-    line deck = item.getTag(item_input,"wand_deck") as str;
-    global "%default_deck" = var.fromJSON(deck) as list[str];
-}
-
-function Player_ShowInv_WandEditor {
-    if (item.hasTag(default.mainHandItem, "item.type", "Wand")) {
-        call Player_Wand_UpdateDeck(default.mainHandItem);
-        line items = Wand_GetDeckItem(global "%default_deck") as list[item];
-        line items_len = list.len(items);
-        default.showInventoryMenu();
-        default.expandInventoryMenu();
-        line slot = 11;
-        for (line temp_item of items) {
-            if (item.hasTag(temp_item, "speel.id", "Empty slot")) {
-                default.setInventoryMenuItem(slot);
-            }
-            else {
-                default.setInventoryMenuItem(slot, temp_item);
-            }
-            line slot += 1;
-            line slot_m9 = slot.remainder(9, mode="Modulo");
-            if (slot_m9 == 0) {
-                slot += 2;
-            }
-        }
-        default.setInventoryMenuName(s"Wand Editor");
-
-    }
-}
