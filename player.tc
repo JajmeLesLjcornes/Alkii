@@ -51,7 +51,7 @@ function Player_Wand_UpdateDeck(item_input:item){
 function Player_ShowInv_WandEditor {
     if (item.hasTag(default.mainHandItem, "item_type", "Wand")) {
         call Player_Wand_UpdateDeck(default.mainHandItem);
-        line items = Wand_GetDeckItem(global "%default_deck") as list[item];
+        line items = Wand_GetDeckItems(global "%default_deck") as list[item];
         line items_len = list.len(items);
         default.showInventoryMenu();
         default.expandInventoryMenu();
