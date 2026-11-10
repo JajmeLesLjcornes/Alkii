@@ -37,7 +37,7 @@ function Wand_UpdateDeck(item_input:item, ...deck:str): item {
     return item_output.setLore(text); 
 }
 
-function Wand_SetLore(...deck:str): list[txt]{
+function Wand_SetLore(deck:list[str]): list[txt]{
     line output = [] as list[txt];
     line items = call Wand_GetDeckItems(line deck) as list[item];
     line text = txt.setToStyledText("", inheritStyles="True");
