@@ -3,7 +3,8 @@
   "id": "wand",
   "items": {
     "wand": {
-      "data": "{id:\"minecraft:stick\",components:{}}",
+      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:base_cast_delay\":5.0d,\"hypercube:item_type\":\"Wand\",\"hypercube:recharge_time\":50.0d,\"hypercube:right_click\":\"Wand_Cast\"}}},count:1,id:\"minecraft:stick\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
       "version": 4440
     }
   },
