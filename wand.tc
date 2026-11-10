@@ -29,7 +29,7 @@ process Wand_CastDelay {
 //      Function
 // ===================
 
-function Wand_UpdateDeck(item_input:item, deck:list[str]): item {
+function Wand_UpdateDeck(item_input:item, ...deck:str): item {
     line deck = list.flatten(line deck);
     line text = call Wand_SetLore(line deck) as list[txt];
     line deck_str = var.toJSON(line deck) as str;
