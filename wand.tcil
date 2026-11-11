@@ -3,7 +3,7 @@
   "id": "wand",
   "items": {
     "wand": {
-      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:base_cast_delay\":5.0d,\"hypercube:item_type\":\"Wand\",\"hypercube:recharge_time\":50.0d,\"hypercube:right_click\":\"Wand_Cast\"}},\"minecraft:custom_name\":{extra:[\"Wand\"],italic:0b,text:\"\"}},count:1,id:\"minecraft:stick\"}",
+      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:base_cast_delay\":5.0d,\"hypercube:item_type\":\"Wand\",\"hypercube:recharge_time\":50.0d,\"hypercube:right_click\":\"Wand_Cast\"}},\"minecraft:custom_name\":{extra:[\"Wand\"],italic:0b,text:\"\"},\"minecraft:damage\":0,\"minecraft:max_damage\":100,\"minecraft:max_stack_size\":1},count:1,id:\"minecraft:stick\"}",
       "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
       "version": 4440
     }
