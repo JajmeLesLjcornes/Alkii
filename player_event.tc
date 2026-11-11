@@ -29,11 +29,9 @@ playerevent changeSlot {
 playerevent clickMenuSlot {
     line inv_name = str.setToString(default.openInventoryTitle, merging="No spaces");
     call "Player_ClickMenuSlot_%var(inv_name)";
-    // AJOUTER FONCTION ICI POUR MENUS
 }
 
 playerevent closeInventory {
     line inv_name = str.setToString(default.openInventoryTitle, merging="No spaces");
-    // AJOUTER FONCTION ICI POUR MENUS
-
+    call "Player_CloseInv_%var(inv_name)";
 }
