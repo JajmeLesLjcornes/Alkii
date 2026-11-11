@@ -3,7 +3,7 @@
   "id": "wand",
   "items": {
     "wand": {
-      "data": "{components:{\"minecraft:custom_name\":{extra:[\"Wand\"],italic:0b,text:\"\"}},id:\"minecraft:stick\"}",
+      "data": "{id:\"minecraft:stick\",components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:item_type\":\"Wand\"}},\"minecraft:custom_name\":{extra:[\"Wand\"],italic:0b,text:\"\"}}}",
       "version": 4440
     }
   },
