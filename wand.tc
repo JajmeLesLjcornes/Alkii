@@ -44,10 +44,10 @@ function Wand_SetLore(deck:list[str]): list[txt]{
     line slot = 1;
     for (line _item of items) {
         line model = _item.getModel();
-        line model.remove(model, "minecraft:", regEx="Disable");
-        line model.setToString("<sprite:items:item/", model, ">", merging="No spaces");
-        // line text.parseExpression(model); // C'est cassé
-        line text.setToStyledText(text, model);
+        line model = line model.remove("minecraft:", regEx="Disable");
+        line model = str.setToString("<sprite:items:item/", model, ">", merging="No spaces");
+        line model_txt = txt.parseExpression(model);
+        line text = line text.setToStyledText(model_txt);
         line slot_m7 = slot.remainder(7, mode="Modulo");
         if (slot_m7 == 0) {
             output.append(text);
