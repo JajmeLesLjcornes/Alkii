@@ -94,8 +94,22 @@ function Player_ClickMenuSlot_WandEditor{
     }
 }
 
-/*
 function Player_CloseInv_WandEditor{
-
+    line new_deck:list[str];
+    for(line i of default.inventoryMenuItems){
+        if(!var.isEmpty(i)){
+            if(item.hasTag(i,"spell_id")){
+                line spell_id = item.getTag(i,"spell_id");
+                list.append(line new_deck,spell_id);
+            }
+        }
+        else{
+            list.append(line new_deck,"Empty slot");
+        }
+    }
+    if (var.exists(new_deck)) {
+        line wand = Wand_UpdateDeck(default.mainHandItem,new_deck);
+        default.replaceItems(default.mainHandItem,wand);
+        call Player_Wand_UpdateDeck(wand);
+    }
 }
-*/
