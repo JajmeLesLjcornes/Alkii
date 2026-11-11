@@ -36,11 +36,10 @@ function Projectile_Shoot(
 
 function Projectile_GetTarget_Raycast(origin:loc, distance_per_iteration:num): str, loc {
 
-    line hitloc1 = Projectile_SelectionEntity(origin, distance_per_iteration);
-    line _entity = game.selectionTargetUUIDs as str;
-    line hitloc2 = Projectile_SelectionPlayer(origin, distance_per_iteration);
-    line _player = game.selectionTargetUUIDs as str;
-    select reset;
+    line hitloc1, line _entity = Projectile_SelectionEntity(origin, distance_per_iteration);
+    
+    line hitloc2, line _player = Projectile_SelectionPlayer(origin, distance_per_iteration);
+    
     print(hitloc1, hitloc2);
 
     if (hitloc1 != hitloc2) {
@@ -61,17 +60,23 @@ function Projectile_GetTarget_Raycast(origin:loc, distance_per_iteration:num): s
     }
 }
 
-function Projectile_SelectionEntity(origin:loc, distance:num, block_collision?:str="Solid blocks"): loc {
+function Projectile_SelectionEntity(origin:loc, distance:num, block_collision?:str="Solid blocks"): loc, str {
     select allEntities();
     filter byRaycast(line hit_loc, origin, distance, blockCollision=block_collision);
+    line _entity = game.selectionTargetUUIDs as str;
+    select reset;
+
     // Voir pour changer si update ici
-    return line hit_loc as loc; // Return 0 pour aucune raison
+    return line hit_loc as loc, _entity; 
 }
 
 
-function Projectile_SelectionPlayer(origin:loc, distance:num, block_collision?:str="Solid blocks"): loc {
+function Projectile_SelectionPlayer(origin:loc, distance:num, block_collision?:str="Solid blocks"): loc, str {
     select !playersByCondition(player.nameEquals(default.name as str));
     filter byRaycast(line hit_loc, origin, distance, blockCollision=block_collision);
+    line _player = game.selectionTargetUUIDs as str;
+    select reset;
+
     // Voir pour changer si update ici
-    return line hit_loc as loc; // Return 0 pour aucune raison
+    return line hit_loc as loc, _player;
 }
