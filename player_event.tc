@@ -28,6 +28,7 @@ playerevent changeSlot {
 
 playerevent clickMenuSlot {
     line inv_name = str.setToString(default.openInventoryTitle, merging="No spaces");
+    call "Player_ClickMenuSlot_%var(inv_name)";
     // AJOUTER FONCTION ICI POUR MENUS
 }
 
