@@ -7,7 +7,7 @@ playerevent join {
 lscancel
 playerevent rightClick {
     event.cancel;
-    if (player.itemIsNotOnCooldown(default.mainHandItem)) {
+    if !(player.itemIsNotOnCooldown(default.mainHandItem)) {
         return;
     }
     line function_to_call = item.getTag(default.mainHandItem, "right_click");
