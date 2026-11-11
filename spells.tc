@@ -52,7 +52,7 @@ process Spell_SmallTeleportBolt {
         1,
         10,
         0,
-        par("copper_fire_flame", amount=1, spreadHoriz=0, spreadVert=0, motion=vec(0, 0, 0q)),
+        par("copper_fire_flame", amount=1, spreadHoriz=0, spreadVert=0, motion=vec(0, 0, 0)),
         0,
         vector_list
     );
