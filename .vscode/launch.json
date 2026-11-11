@@ -12,7 +12,7 @@
             "folder": "${workspaceFolder}",
             "exportMode": "sendToCodeClient",
             "autoSwitchToDev": true,
-            "autoSwitchToPlay": false,
+            "autoSwitchToPlay": true,
             "plotSize": 300
         }
     ]
