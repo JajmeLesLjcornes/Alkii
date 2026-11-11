@@ -4,15 +4,17 @@
 
 process Player_Loop1t() {
     repeat {
-        default.setExperience(n"%math(100 * %var(%default.mana) / %var(%default.mana max))", unit="Level Percentage");
-        default.setExperience(n"%var(%default_mana)", unit="Level");
-
+        call Player_ShowCurrentMana();
         // Fin de loop
         wait(1, unit="Ticks");
     }
 }
 
+function Player_ShowCurrentMana() {
+    default.setExperience(n"%math(100 * %var(%default_mana) / %var(%default_mana_max))", unit="Level Percentage");
+    default.setExperience(n"%var(%default_mana)", unit="Level");
 
+}
 
 
 
