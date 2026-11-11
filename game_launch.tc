@@ -5,11 +5,11 @@ gameevent startup {
 
 function game_setup_vars {
     line spells_id = [
-        "Spark Bolt",
-        "Double Cast",
-        "No Gravity",
-        "Small Teleport Bolt",
-        "Empty slot"
+        "SparkBolt",
+        "DoubleCast",
+        "NoGravity",
+        "SmallTeleportBolt",
+        "EmptySlot"
     ];
 
     line spells_item:list[item] = [
