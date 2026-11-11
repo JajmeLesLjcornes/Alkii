@@ -8,11 +8,12 @@
 
 process Wand_RechargeTime {
     line current_wand = item.setDurability(default.mainHandItem, 0, durabilityType="Set Remaining Percentage") as item;
-    line recharge_time = item.getTag(default.mainHandItem, "recharge_time") as num;
+    line wand_recharge_time = item.getTag(default.mainHandItem, "recharge_time") as num;
     default.replaceItems(default.mainHandItem, current_wand);
-    while (recharge_time < 100) {
+    line recharge_time = 0;
+    while (line recharge_time < 100) {
         wait;
-        line recharge_time += 100/recharge_time as num;
+        line recharge_time += 100/wand_recharge_time as num;
         line new_wand = item.setDurability(current_wand, recharge_time, durabilityType="Set Remaining Percentage") as item;
         default.replaceItems(current_wand, new_wand);
         line current_wand = new_wand;
@@ -80,7 +81,7 @@ function Wand_CheckEndOfSpells{
 }
 
 function Wand_Cast {
-    line cooldown_left = item.getDurability(default.mainHandItem);
+    line cooldown_left = item.getDurability(default.mainHandItem, durabilityType="Get Remaining Percentage");
     if (cooldown_left != 100) {
         return;
     } 
