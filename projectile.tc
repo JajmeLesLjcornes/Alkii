@@ -10,13 +10,15 @@ function Projectile_Shoot(
     spread?:num = 0,
     vector_list?:list[str]): str, loc {
         line origin = Vector_SpreadRNG(origin, spread);
+        line target_uuid = "";
+         line hit_loc = origin;
         repeat (iteration) {
             line target_uuid, line hit_loc = Projectile_GetTarget_Raycast(origin, distance_per_iteration);
             allPlayers.displayParticleLine(particle, origin, hit_loc);
             if (target_uuid != "") {
                 return target_uuid, hit_loc;
             }
-            if (game.blockEquals(hit_loc)) {
+            if !(game.blockEquals(hit_loc)) {
                 return target_uuid, hit_loc;
             }
 
@@ -32,6 +34,7 @@ function Projectile_Shoot(
             }
             wait(tick_per_iteration);
         }
+        return target_uuid, hit_loc;
 }
 
 function Projectile_GetTarget_Raycast(origin:loc, distance_per_iteration:num): str, loc {
@@ -40,7 +43,6 @@ function Projectile_GetTarget_Raycast(origin:loc, distance_per_iteration:num): s
     
     line hitloc2, line _player = Projectile_SelectionPlayer(origin, distance_per_iteration);
     
-    print(hitloc1, hitloc2);
 
     if (hitloc1 != hitloc2) {
         line vec1 = vec.between(origin, hitloc1);
