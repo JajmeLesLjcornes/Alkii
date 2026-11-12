@@ -1,5 +1,9 @@
 process game_loop1t {
     repeat {
+        call Tab_HUD();
+        call DayCycle();
+
+        //End of loop
         wait(1, unit="Ticks");
     }
 }
