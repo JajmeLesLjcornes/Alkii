@@ -1,0 +1,7 @@
+
+
+function DayCycle() {
+    line timestamp = num.wrap(game.timestamp, 0, 86401 );
+    line timestamp = n"%math( %var(timestamp)/3.6 )";
+    allPlayers.setTime(timestamp);
+}
