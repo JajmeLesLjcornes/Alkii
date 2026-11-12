@@ -4,6 +4,10 @@ playerevent join {
     call Player_Wand_UpdateDeck(default.mainHandItem);
 }
 
+playerevent leave {
+    call Player_Leave();
+}
+
 lscancel
 playerevent rightClick {
     event.cancel;
