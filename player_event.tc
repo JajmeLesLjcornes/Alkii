@@ -35,3 +35,13 @@ playerevent closeInventory {
     line inv_name = str.setToString(default.openInventoryTitle, merging="No spaces");
     call "Player_CloseInv_%var(inv_name)";
 }
+
+lscancel
+playerevent heal {
+    event.cancel();
+}
+
+lscancel
+playerevent exhaustion {
+    event.cancel();
+}
