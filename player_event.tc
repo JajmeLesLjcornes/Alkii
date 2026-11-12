@@ -22,7 +22,7 @@ playerevent swapHands {
 
 lscancel
 playerevent changeSlot {
-    call Player_Wand_UpdateDeck(default.mainHandItem);
+    call Player_Wand_UpdateDeck(event.item);
 }
 
 
