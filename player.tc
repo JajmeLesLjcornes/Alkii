@@ -30,7 +30,10 @@ function Player_Join() {
     start Player_Loop1t;
 
     // Tempo
-    default.setHotbarItems(call Wand_UpdateDeck(litem("wand", "wand"), ["SmallTeleportBolt"])  );
+    default.setHotbarItems(
+        call Wand_UpdateDeck(litem("wand", "wand"), ["SmallTeleportBolt"]),
+        call Wand_UpdateDeck(litem("wand", "wand"), ["SparkBolt","SparkBolt","SparkBolt","SparkBolt"])
+        );
 }
 
 
