@@ -30,12 +30,25 @@ process Spell_SparkBolt {
         return;
     }
     line vector_list = [
-        "gravity=0.04",
+        "Gravity=0.04",
     ] as list[str];
     call SpellModifier_add_remove(vector_list);
     local cast_delay = 5;
     start Wand_CastDelay(localVariables="Share", targetMode="With current targets");
-
+    line hit_target_uuid, line hit_target_loc = Projectile_Shoot(
+        default.eyeLocation,
+        10,
+        2,
+        1,
+        par("dust", amount=1, spreadHoriz=0, spreadVert=0, color="#CC00CC"),
+        0.05,
+        vector_list
+    );
+    select playersByName(hit_target_uuid);
+    selected.damage(2);
+    select entitiesByName(hit_target_uuid);
+    selectedEntity.damage(2);
+    select reset;   
 }
 
 process Spell_SmallTeleportBolt {
