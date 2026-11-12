@@ -72,7 +72,7 @@ function Player_ShowInv_WandEditor {
             litem("menu_items", "wandeditor_1"),litem("menu_items", "wandeditor_1"),litem("menu_items", "wandeditor_1"),litem("menu_items", "wandeditor_1"),litem("menu_items", "wandeditor_1"),litem("menu_items", "wandeditor_1"),litem("menu_items", "wandeditor_1"),litem("menu_items", "wandeditor_1"),litem("menu_items", "wandeditor_1")); 
         line slot = 11;
         for (line temp_item of items) {
-            if (item.hasTag(temp_item, "spell_id", "Empty slot")) {
+            if (item.hasTag(temp_item, "spell_id", "EmptySlot")) {
                 default.setInventoryMenuItem(slot);
             }
             else {
@@ -106,7 +106,7 @@ function Player_CloseInv_WandEditor{
             }
         }
         else{
-            list.append(line new_deck,"Empty slot");
+            list.append(line new_deck,"EmptySlot");
         }
     }
     if (var.exists(new_deck)) {
