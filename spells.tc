@@ -56,7 +56,7 @@ process Spell_SmallTeleportBolt {
         0,
         vector_list
     );
-    selected.teleport(hit_target_loc);
+    selected.teleport(hit_target_loc, keepRot="True", keepVel="True");
 }
 
 // ===================
