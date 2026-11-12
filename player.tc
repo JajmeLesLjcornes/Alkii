@@ -10,13 +10,30 @@ process Player_Loop1t() {
     }
 }
 
+process Player_Loop_SpecSoul() {
+    while (player.isInGameMode(gamemode="Spectator")) {
+        select eventTarget(target="Default");
+        select inverse;
+        selected.displayParticleEffect(par("soul"), default.eyeLocation);
+
+        // Fin de loop
+        wait(1, unit="Seconds");
+    }
+}
+
+
+
 function Player_ShowCurrentMana() {
     default.setExperience(n"%math(100 * %var(%default_mana) / %var(%default_mana_max))", unit="Level Percentage");
     default.setExperience(n"%var(%default_mana)", unit="Level");
 
 }
 
+function Player_Leave() {
+    
+    allPlayers.sendMessage(s"<#996363>-", default.name, merging="Add spaces");
 
+}
 
 function Player_Join() {
     while !(var.exists(spells_dict)) {
@@ -27,6 +44,16 @@ function Player_Join() {
     global "%default_mana" = 100;
     global "%default_mana_max" = 100;
 
+    default.setChatStyle(s"<italic><#78cca6>");
+    default.setWorldBorder(loc(150.5, 0.5, 150.5), 150);
+    default.setAllowHandCrafting(allow="Disable");
+
+    //Spec mode
+
+    allPlayers.sendMessage(s"<#a9c8cc>+", default.name, merging="Add spaces");
+}
+
+function Player_Spawn() {
     start Player_Loop1t;
 
     // Tempo
@@ -35,8 +62,6 @@ function Player_Join() {
         call Wand_UpdateDeck(litem("wand", "wand"), ["SparkBolt","SparkBolt","SparkBolt","SparkBolt"])
         );
 }
-
-
 
 
 
