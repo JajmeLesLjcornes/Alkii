@@ -4,10 +4,11 @@ declare global "%default_mana_max": num;
 declare global "%default_hp": num;    
 declare global "%default_hp_max": num;
 
-
 declare global "%default_deck": list[str];
 declare global "%default_deck_index": num;
 
+
+declare global game_loading: num;
 
 declare global spells_dict: dict[item];
 
