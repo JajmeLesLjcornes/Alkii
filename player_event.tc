@@ -8,6 +8,10 @@ playerevent leave {
     call Player_Leave();
 }
 
+playerevent respawn {
+    call Player_SetSpecMode();
+}
+
 lscancel
 playerevent rightClick {
     event.cancel;
@@ -20,6 +24,7 @@ playerevent rightClick {
 
 lscancel
 playerevent swapHands {
+    
     event.cancel();
     call Player_ShowInv_WandEditor(); // à changer d'endroit plus tard
 }
@@ -33,6 +38,14 @@ playerevent changeSlot {
 playerevent clickMenuSlot {
     line inv_name = str.setToString(default.openInventoryTitle, merging="No spaces");
     call "Player_ClickMenuSlot_%var(inv_name)";
+}
+
+lscancel
+playerevent clickInventorySlot {
+    line click_type = str.setToString("inventory_click_",event.inventoryClickType);
+    line function_to_call = item.getTag(event.item, line click_type);
+    print(line click_type, line function_to_call);
+    call "%var(function_to_call)";
 }
 
 playerevent closeInventory {
