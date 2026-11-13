@@ -49,6 +49,9 @@ function Player_HUD() {
 
 
 function Player_Leave() {
+    if (player.isInGameMode(gamemode="Adventure")) {
+        call Player_Death();
+    }
     allPlayers.sendMessage(s"<#996363>-", default.name, merging="Add spaces");
 }
 
@@ -70,6 +73,9 @@ function Player_Join() {
 }
 
 function Player_SetPlayMode() {
+    if (game_loading != 0) {
+        endthread;
+    }
     default.clearInventory(clearCraftingAndCursor="True", clearMode="Entire inventory");
     default.setToAdventureMode();
 
@@ -93,7 +99,6 @@ function Player_SetPlayMode() {
 function Player_Death() {
 
     call Player_SetSpecMode();
-    endthread;
 
 }
 
