@@ -1,0 +1,27 @@
+
+
+
+
+
+//
+// Players
+//
+
+
+
+
+
+
+
+
+//
+// Staff
+//
+
+
+
+function AdminCommand_gen(seed:str) {
+    line check_seed = n"%var(seed)";
+
+    call TerrainGen_Jajme_1(check_seed);
+}
