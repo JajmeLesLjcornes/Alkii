@@ -62,3 +62,19 @@ lscancel
 playerevent exhaustion {
     event.cancel();
 }
+
+lscancel
+playerevent takeDamage {
+    event.setDamage(0);
+}
+
+
+
+playerevent command {
+    line command_text = event.commandArguments;
+    
+    call "Command_%index(command_text,1)"(command_text[2]);
+    if (default.hasPlotPermission()) {
+        call "AdminCommand_%index(command_text,1)"(command_text[2]);
+    }
+}
