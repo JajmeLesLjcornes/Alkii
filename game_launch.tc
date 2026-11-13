@@ -1,6 +1,9 @@
 gameevent startup {
-     game_setup_vars();
-     start game_loop1t;
+    global game_loading = 1;
+    game_setup_vars();
+    start Game_Loop1t;
+    global game_loading = 0;
+
 }
 
 function game_setup_vars {
