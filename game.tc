@@ -1,4 +1,4 @@
-process game_loop1t {
+process Game_Loop1t {
     repeat {
         call Tab_HUD();
         call DayCycle();
@@ -7,3 +7,21 @@ process game_loop1t {
         wait(1, unit="Ticks");
     }
 }
+
+
+process Game_Reset_SetPlayerIntoSpecMode {
+    call Player_SetSpecMode();
+}
+
+function Game_Reset {
+    select allPlayers;
+    start Game_Reset_SetPlayerIntoSpecMode(targetMode="For each in selection");
+    select reset;
+    global game_loading = 1;
+}
+
+function Game_Ready {
+    global game_loading = 0;
+
+}
+
