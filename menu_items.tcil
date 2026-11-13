@@ -2,6 +2,21 @@
   "compilationMode": "item",
   "id": "menu_items",
   "items": {
+    "eternal_unlock_button": {
+      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:inventory_click_left\":\"EternalTree_Teleport\"}},\"minecraft:custom_name\":{extra:[{color:\"#946999\",text:\"Eternal Unlock\"}],italic:0b,text:\"\"}},count:1,id:\"minecraft:oak_sapling\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
+      "version": 4440
+    },
+    "play_button": {
+      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:inventory_click_left\":\"Player_SetPlayMode\"}},\"minecraft:custom_name\":{extra:[{color:\"#946999\",text:\"Play\"}],italic:0b,text:\"\"}},count:1,id:\"minecraft:bookshelf\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
+      "version": 4440
+    },
+    "settings_button": {
+      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:inventory_click_left\":\"Player_Settings\"}},\"minecraft:custom_name\":{extra:[{color:\"#946999\",text:\"Settings\"}],italic:0b,text:\"\"}},count:1,id:\"minecraft:command_block\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
+      "version": 4440
+    },
     "wandeditor_1": {
       "data": "{id:\"minecraft:black_stained_glass_pane\",components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:menu_tag\":\"cancel\"}},\"minecraft:tooltip_display\":{hide_tooltip:1b}}}",
       "version": 4440
