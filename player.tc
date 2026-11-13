@@ -1,10 +1,12 @@
 
 
-
+// Process 
 
 process Player_Loop1t() {
-    repeat {
+    while (player.isInGameMode(gamemode="Adventure")) {
         call Player_ShowCurrentMana();
+        call Player_ShowCurrentHealth();
+        call Player_HUD();
         // Fin de loop
         wait(1, unit="Ticks");
     }
@@ -21,18 +23,33 @@ process Player_Loop_SpecSoul() {
     }
 }
 
-
+//
 
 function Player_ShowCurrentMana() {
     default.setExperience(n"%math(100 * %var(%default_mana) / %var(%default_mana_max))", unit="Level Percentage");
     default.setExperience(n"%var(%default_mana)", unit="Level");
-
 }
 
-function Player_Leave() {
+function Player_ShowCurrentHealth() {
     
-    allPlayers.sendMessage(s"<#996363>-", default.name, merging="Add spaces");
+}
 
+function Player_HUD() {
+    default.sendActionBar(
+        s"<#cc88b9>",
+        n"%var(%default_hp_max)",
+        s"<#634566>/<#cc88b9>",
+        n"%var(%default_hp)",
+        s"❤",
+        inheritStyles="True", merging="No spaces"
+    );
+}
+
+
+
+
+function Player_Leave() {
+    allPlayers.sendMessage(s"<#996363>-", default.name, merging="Add spaces");
 }
 
 function Player_Join() {
@@ -41,19 +58,28 @@ function Player_Join() {
         wait;
     }
     
-    global "%default_mana" = 100;
-    global "%default_mana_max" = 100;
 
     default.setChatStyle(s"<italic><#78cca6>");
     default.setWorldBorder(loc(150.5, 0.5, 150.5), 150);
     default.setAllowHandCrafting(allow="Disable");
+    default.setInstantRespawn();
 
-    //Spec mode
+    call Player_SetSpecMode();
 
     allPlayers.sendMessage(s"<#a9c8cc>+", default.name, merging="Add spaces");
 }
 
-function Player_Spawn() {
+function Player_SetPlayMode() {
+    default.clearInventory(clearCraftingAndCursor="True", clearMode="Entire inventory");
+    default.setToAdventureMode();
+
+    // Set vars
+    global "%default_mana" = 100;
+    global "%default_mana_max" = 100;
+
+    global "%default_hp" = 100;    
+    global "%default_hp_max" = 100;
+
     start Player_Loop1t;
 
     // Tempo
@@ -61,9 +87,28 @@ function Player_Spawn() {
         call Wand_UpdateDeck(litem("wand", "wand"), ["SmallTeleportBolt"]),
         call Wand_UpdateDeck(litem("wand", "wand"), ["SparkBolt","SparkBolt","SparkBolt","SparkBolt"])
         );
+    call Player_Wand_UpdateDeck(default.mainHandItem);
 }
 
+function Player_Death() {
 
+    call Player_SetSpecMode();
+    endthread;
+
+}
+
+function Player_SetSpecMode() {
+    default.setToSpectatorMode();
+    default.clearInventory(clearCraftingAndCursor="True", clearMode="Entire inventory");
+    default.teleport(loc(150, 150, 150));
+    default.setBossBar(s"<#789499>Open your inventory to start the adventure", color="White");
+    default.setInventoryItems(
+        item("air"),item("air"),item("air"),item("air"),item("air"),item("air"),item("air"),item("air"),item("air"),
+        item("air"),item("air"),litem("menu_items","eternal_unlock_button"),item("air"),litem("menu_items","play_button"),item("air"),litem("menu_items","settings_button"));
+    start Player_Loop_SpecSoul();
+    default.setSpectatorCollision();
+
+}
 
 
 
