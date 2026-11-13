@@ -1,0 +1,30 @@
+/**
+ * Function linked to the terrain generation
+ */
+
+
+
+function TerrainGen_Jajme_1(seed:num) {
+    call Game_Reset;
+    print(s"<#769963>Generating new world with seed :", seed);
+
+    call init_cpu_limiter();
+    for (line grid_loc of grid(loc(0.5, 25, 0.5), loc(300.5, 25, 300.5))) {
+        line noise = num.getNoise(grid_loc, 0.12, 1, 1.5, 0.05, seed, dimensions="2D", returnType="Simplex"); 
+        call TerrainGen_SetAir(grid_loc);
+        
+        call cpu_limiter(80);
+    }
+
+    call Game_Ready;
+}
+
+
+function TerrainGen_SetAir(grid_loc:loc) {
+
+    game.setRegion(item("air"), grid_loc, loc(grid_loc.x, 255, grid_loc.y));
+
+}
+
+
+
