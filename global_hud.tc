@@ -5,7 +5,7 @@
 function Tab_HUD() {
     line tab_names = "";
     for (line player_name of game.plotPlayerNames) {
-        line tab_names = tab_names.setToString(tab_names, player_name, merging="Add spaces");
+        line tab_names = tab_names.setToString(player_name, merging="Add spaces");
     }
     allPlayers.setTabListInfo(
         s"<strikethrough><gradient:#5e4fa2:#f79459:red><space:50></gradient>",
