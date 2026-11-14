@@ -10,8 +10,11 @@ function TerrainGen_Jajme_1(seed:num) {
 
     call init_cpu_limiter();
     for (line grid_loc of grid(loc(0.5, 25, 0.5), loc(300.5, 25, 300.5))) {
-        line noise = num.getNoise(grid_loc, 0.12, 1, 1.5, 0.05, seed, dimensions="2D", returnType="Simplex"); 
+        line noise1 = num.getNoise(grid_loc, 0.12, 1, 1.5, 0.05, seed, dimensions="2D", returnType="Perlin"); 
+        line noise2 = num.getNoise(grid_loc, 0.12, 1, 1.5, 0.05, seed, dimensions="2D", returnType="Value"); 
+        
         call TerrainGen_SetAir(grid_loc);
+        call TerrainGen_SetStone(grid_loc, (noise1+noise2)/2 );
         
         call cpu_limiter(80);
     }
@@ -22,9 +25,15 @@ function TerrainGen_Jajme_1(seed:num) {
 
 function TerrainGen_SetAir(grid_loc:loc) {
 
-    game.setRegion(item("air"), grid_loc, loc(grid_loc.x, 255, grid_loc.y));
+    game.setRegion(item("air"), grid_loc, loc(grid_loc.x, 255, grid_loc.z));
 
 }
 
 
+
+function TerrainGen_SetStone(grid_loc:loc, noise:num) {
+
+    game.setRegion(item("stone"), grid_loc, loc(grid_loc.x, n"%math(%var(noise)*100+25)", grid_loc.z));
+
+}
 
