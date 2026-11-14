@@ -111,7 +111,7 @@ function Player_SetSpecMode() {
         item("air"),item("air"),item("air"),item("air"),item("air"),item("air"),item("air"),item("air"),item("air"),
         item("air"),item("air"),litem("menu_items","eternal_unlock_button"),item("air"),litem("menu_items","play_button"),item("air"),litem("menu_items","settings_button"));
     start Player_Loop_SpecSoul();
-    default.setSpectatorCollision();
+    //default.setSpectatorCollision();
 
 }
 
